@@ -1,269 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aditya Dugar — Engineer · AI Builder · Problem Solver</title>
-  <meta name="description"
-    content="Portfolio of Aditya Dugar, a first-year engineering student and AI/ML builder creating real-world intelligent systems.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Raleway:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-    
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Dugar — Engineer · AI Builder · Problem Solver</title>
+<meta name="description" content="Portfolio of Aditya Dugar, a first-year engineering student building the future with AI/ML, FastAPI, and creative engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 
+</head>
 <body>
 
-  <!-- SVG Grain Texture Filter -->
-  <svg class="grain-filter" xmlns="http://www.w3.org/2000/svg">
-    <filter id="grain">
-      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-      <feColorMatrix type="saturate" values="0" />
-    </filter>
-    <rect width="100%" height="100%" filter="url(#grain)" opacity="0.04" />
-  </svg>
+<!-- GRAIN OVERLAY -->
+<div class="grain-overlay" aria-hidden="true"></div>
 
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-ring" id="cursorRing"></div>
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-  <!-- Navigation -->
-  <nav class="nav-bar" id="navBar">
-    <a href="#hero" class="nav-logo">A.</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<!-- THREE.JS CANVAS -->
+<canvas id="three-canvas"></canvas>
 
-  <!-- ════════════════════════════════════════════════════
-       SECTION 1 — HERO
-  ════════════════════════════════════════════════════ -->
-  <section id="hero" class="section-light">
-    <div class="hero-glow"></div>
-    <div class="profile-badge">A</div>
-    <div class="hero-content">
-      <h1 class="hero-name" id="heroName" aria-label="Aditya Dugar"></h1>
-      <div class="hero-divider"></div>
-      <p class="hero-subtitle">Engineer &nbsp;·&nbsp; AI Builder &nbsp;·&nbsp; Problem Solver</p>
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+  <a href="#hero" class="nav-logo">A<span class="dot"></span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#hackathons">Hackathons</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- =============== HERO =============== -->
+<section class="hero section-light" id="hero">
+  <div class="hero-perspective" id="heroPerspective">
+    <h1 class="hero-name" id="heroName"></h1>
+    <div class="hero-divider" id="heroDivider"></div>
+    <p class="hero-subtitle" id="heroSubtitle">Engineer · AI Builder · Problem Solver</p>
+  </div>
+  <span class="hero-scroll-cta">scroll to explore ↓</span>
+</section>
+
+<!-- =============== ABOUT =============== -->
+<section class="about section-light" id="about">
+  <span class="section-watermark" aria-hidden="true">01</span>
+  <div class="about-inner">
+    <div class="about-timeline">
+      <div class="about-timeline-fill" id="timelineFill"></div>
     </div>
-    <div class="scroll-hint">
-      scroll to explore <span>↓</span>
+    <div class="about-content" id="aboutContent">
+      <div class="section-title">About</div>
+      <p>I'm a first-year engineering student at Jain University, wired to build things that genuinely matter.</p>
+      <p>My journey started with curiosity and quickly turned into obsession — from training AI models for agriculture with AgriVision Pro, to designing full-stack content pipelines that run autonomously.</p>
+      <p>I thrive at the intersection of artificial intelligence, systems engineering, and creative problem-solving. Whether it's deploying FastAPI microservices, orchestrating workflows with n8n, or cracking CTF challenges at 2 AM — I'm all in.</p>
+      <p>I believe engineering isn't just about writing code. It's about architecting solutions that feel intentional, resilient, and human. Every project I ship is a step closer to that ideal.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ════════════════════════════════════════════════════
-       SECTION 2 — ABOUT
-  ════════════════════════════════════════════════════ -->
-  <section id="about" class="section-light">
-    <span class="section-number light">01</span>
-    <div class="section-inner">
-      <div class="about-number">01</div>
-      <div class="about-text">
-        <div class="section-label reveal">Who I Am</div>
-        <h2 class="section-title reveal">About Aditya Dugar</h2>
-        <p class="about-para">
-          I'm a first-year engineering student at Jain University with an unrelenting drive
-          to build things that matter. While most are still figuring out the curriculum,
-          I'm deep into building real AI systems — from computer vision pipelines to
-          fully automated content workflows.
-        </p>
-        <p class="about-para">
-          AgriVision Pro, my crop disease detection system, puts AI directly in the hands
-          of Indian farmers through WhatsApp. My automation pipelines run entirely locally,
-          generating and posting social media content without any cloud dependency. These
-          aren't classroom exercises — they're working products.
-        </p>
-        <p class="about-para">
-          I compete in hackathons not for the certificates, but for the pressure-cooker
-          environments where ideas crystallize into code. Every weekend is a sprint. Every
-          project is a step closer to the future I'm engineering — one commit at a time.
-        </p>
+<!-- =============== SKILLS =============== -->
+<section class="skills section-dark" id="skills">
+  <span class="section-watermark" aria-hidden="true">02</span>
+  <div class="section-title">Skills & Tools</div>
+  <div class="skills-grid" id="skillsGrid">
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">Python</div><div class="skill-card-back"></div></div></div>
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">FastAPI</div><div class="skill-card-back"></div></div></div>
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">React</div><div class="skill-card-back"></div></div></div>
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">n8n</div><div class="skill-card-back"></div></div></div>
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">Ollama</div><div class="skill-card-back"></div></div></div>
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">ComfyUI</div><div class="skill-card-back"></div></div></div>
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">PostgreSQL</div><div class="skill-card-back"></div></div></div>
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">GitHub Actions</div><div class="skill-card-back"></div></div></div>
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">Three.js</div><div class="skill-card-back"></div></div></div>
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">Linux</div><div class="skill-card-back"></div></div></div>
+    <div class="skill-card"><div class="skill-card-inner"><div class="skill-card-front">CTF / Security</div><div class="skill-card-back"></div></div></div>
+  </div>
+</section>
+
+<!-- =============== PROJECTS =============== -->
+<section class="projects section-light" id="projects">
+  <span class="section-watermark" aria-hidden="true">03</span>
+  <div class="section-title">Projects</div>
+  <div class="projects-grid" id="projectsGrid">
+    <div class="project-card">
+      <h3>AgriVision Pro</h3>
+      <p>An AI-powered agricultural analysis platform that uses computer vision and deep learning to detect crop diseases, assess soil health, and provide actionable recommendations to farmers in real-time.</p>
+      <div class="project-tags">
+        <span>Python</span><span>FastAPI</span><span>TensorFlow</span><span>React</span><span>PostgreSQL</span>
       </div>
     </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════════
-       SECTION 3 — SKILLS (DARK)
-  ════════════════════════════════════════════════════ -->
-  <section id="skills" class="section-dark">
-    <span class="section-number dark-num">02</span>
-    <div class="section-inner">
-      <div class="section-label reveal" style="color: var(--muted);">The Stack</div>
-      <h2 class="section-title reveal">Skills &amp; Technologies</h2>
-
-      <div class="skills-grid">
-        <!-- AI / ML -->
-        <div class="reveal">
-          <div class="skill-group-label">AI / ML</div>
-          <div class="skill-pills stagger">
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">TensorFlow</span>
-            <span class="skill-pill">PyTorch</span>
-            <span class="skill-pill">OpenCV</span>
-            <span class="skill-pill">Scikit-learn</span>
-            <span class="skill-pill">LangChain</span>
-            <span class="skill-pill">Ollama</span>
-            <span class="skill-pill">ComfyUI</span>
-          </div>
-        </div>
-
-        <!-- Web Development -->
-        <div class="reveal">
-          <div class="skill-group-label">Web Development</div>
-          <div class="skill-pills stagger">
-            <span class="skill-pill">HTML / CSS</span>
-            <span class="skill-pill">JavaScript</span>
-            <span class="skill-pill">React</span>
-            <span class="skill-pill">Node.js</span>
-            <span class="skill-pill">Next.js</span>
-            <span class="skill-pill">REST APIs</span>
-          </div>
-        </div>
-
-        <!-- Tools & Systems -->
-        <div class="reveal">
-          <div class="skill-group-label">Tools &amp; Systems</div>
-          <div class="skill-pills stagger">
-            <span class="skill-pill">Git / GitHub</span>
-            <span class="skill-pill">GitHub Actions</span>
-            <span class="skill-pill">Docker</span>
-            <span class="skill-pill">n8n</span>
-            <span class="skill-pill">Linux / WSL</span>
-            <span class="skill-pill">CI/CD</span>
-          </div>
-        </div>
+    <div class="project-card">
+      <h3>AI Content Pipeline</h3>
+      <p>A fully autonomous content generation system powered by Ollama and n8n. Orchestrates AI models for research, writing, image generation via ComfyUI, and multi-platform publishing — zero manual intervention.</p>
+      <div class="project-tags">
+        <span>n8n</span><span>Ollama</span><span>ComfyUI</span><span>FastAPI</span><span>Automation</span>
       </div>
     </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════════
-       SECTION 4 — PROJECTS (LIGHT)
-  ════════════════════════════════════════════════════ -->
-  <section id="projects" class="section-light">
-    <span class="section-number light">03</span>
-    <div class="section-inner">
-      <div class="section-label reveal">What I've Built</div>
-      <h2 class="section-title reveal">Projects</h2>
-
-      <div class="projects-list">
-        <!-- Project 1 -->
-        <div class="project-card reveal-left">
-          <span class="project-card-number">01</span>
-          <div class="project-tags">
-            <span class="project-tag">Computer Vision</span>
-            <span class="project-tag">WhatsApp API</span>
-            <span class="project-tag">Python</span>
-          </div>
-          <h3>AgriVision Pro</h3>
-          <p class="project-desc">
-            AI-powered crop disease detection system designed for Indian farmers.
-            Upload a photo via WhatsApp, receive instant diagnosis and treatment
-            recommendations — bridging cutting-edge computer vision with rural accessibility.
-          </p>
-          <span class="project-arrow">→</span>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-card reveal-right">
-          <span class="project-card-number">02</span>
-          <div class="project-tags">
-            <span class="project-tag">n8n</span>
-            <span class="project-tag">Ollama</span>
-            <span class="project-tag">ComfyUI</span>
-            <span class="project-tag">Instagram API</span>
-          </div>
-          <h3>AI Content Automation Pipeline</h3>
-          <p class="project-desc">
-            A fully local AI system that auto-generates social media content —
-            from ideation to image generation to posting on Instagram. Zero cloud
-            costs, complete creative control, entirely self-hosted.
-          </p>
-          <span class="project-arrow">→</span>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-card reveal-left">
-          <span class="project-card-number">03</span>
-          <div class="project-tags">
-            <span class="project-tag">Node.js</span>
-            <span class="project-tag">React</span>
-            <span class="project-tag">DevOps</span>
-          </div>
-          <h3>CI/CD Pipeline · GitHub Actions</h3>
-          <p class="project-desc">
-            Production-grade deployment workflow built from scratch — staging and
-            production environments, automated testing, and seamless GitHub Actions
-            integration for continuous delivery.
-          </p>
-          <span class="project-arrow">→</span>
-        </div>
+    <div class="project-card">
+      <h3>CI/CD Deployment System</h3>
+      <p>Built a production-grade continuous integration and deployment pipeline using GitHub Actions, Docker, and automated testing — enabling single-push deployments with rollback capability.</p>
+      <div class="project-tags">
+        <span>GitHub Actions</span><span>Docker</span><span>Linux</span><span>Bash</span>
       </div>
     </div>
-  </section>
-
-  <!-- ════════════════════════════════════════════════════
-       SECTION 5 — HACKATHONS (DARK)
-  ════════════════════════════════════════════════════ -->
-  <section id="hackathons" class="section-dark">
-    <span class="section-number dark-num">04</span>
-    <div class="section-inner">
-      <div class="section-label reveal" style="color: var(--muted);">Battles</div>
-      <h2 class="section-title reveal">Competed. Built. Shipped.</h2>
-
-      <div class="hackathon-cards">
-        <div class="hackathon-card shimmer reveal">
-          <h3>INCEPTRIX Hackathon</h3>
-          <div class="hack-role">Participant &amp; Builder</div>
-          <div class="hack-year">2026</div>
-        </div>
-
-        <div class="hackathon-card rose-accent reveal">
-          <h3>GRInova Innovation Program</h3>
-          <div class="hack-role">Team MATRIX</div>
-          <div class="hack-year">2026</div>
-        </div>
+    <div class="project-card">
+      <h3>CTF Security Challenges</h3>
+      <p>Active CTF competitor focused on web exploitation, cryptography, reverse engineering, and binary exploitation. Building tools and writeups to contribute back to the security community.</p>
+      <div class="project-tags">
+        <span>CTF</span><span>Python</span><span>Security</span><span>Linux</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ════════════════════════════════════════════════════
-       SECTION 6 — CONTACT (LIGHT)
-  ════════════════════════════════════════════════════ -->
-  <section id="contact" class="section-light">
-    <span class="section-number light">05</span>
-    <div class="section-inner">
-      <div class="section-label reveal">Let's Connect</div>
-      <h2 class="section-title reveal">Start a Conversation</h2>
-      <div class="contact-divider reveal"></div>
-
-      <div class="contact-links reveal">
-        <a href="https://www.linkedin.com/in/aditya-dugar-b95962219/" target="_blank" rel="noopener"
-          class="contact-link">LinkedIn</a>
-        <a href="mailto:adityadugar7@gmail.com" class="adityadugar7@gmail.com">Email</a>
-      </div>
-
-      <div class="reveal">
-        <a href="https://www.linkedin.com/in/aditya-dugar-b95962219/" target="_blank" rel="noopener" class="cta-button">
-          Open LinkedIn <span class="cta-arrow">→</span>
-        </a>
-      </div>
+<!-- =============== HACKATHONS =============== -->
+<section class="hackathons section-dark" id="hackathons">
+  <span class="section-watermark" aria-hidden="true">04</span>
+  <div class="section-title">Hackathons</div>
+  <div class="hack-grid" id="hackGrid">
+    <div class="hack-card">
+      <h3>INCEPTRIX 2026</h3>
+      <div class="hack-team">TEAM MATRIX</div>
+      <p>Competed in one of India's premier inter-college hackathons, building an AI-driven solution under 24-hour pressure. Focused on real-world problem solving with rapid prototyping and deployment.</p>
     </div>
-  </section>
+    <div class="hack-card">
+      <h3>GRInova Hackathon</h3>
+      <div class="hack-team">TEAM MATRIX</div>
+      <p>Tackled green innovation challenges with an AI-powered sustainability platform. Showcased full-stack development and machine learning integration under competitive constraints.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>Designed &amp; built by Aditya Dugar · 2026</p>
-  </footer>
+<!-- =============== CONTACT =============== -->
+<section class="contact section-light" id="contact">
+  <h2 class="contact-title">Start a Conversation</h2>
+  <div class="contact-ornament">
+    <svg viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="12" x2="48" y2="12" stroke="var(--gold)" stroke-width="1"/>
+      <circle cx="60" cy="12" r="4" stroke="var(--gold)" stroke-width="1" fill="none"/>
+      <line x1="72" y1="12" x2="120" y2="12" stroke="var(--gold)" stroke-width="1"/>
+    </svg>
+  </div>
+  <div class="contact-links">
+    <a href="mailto:adityadugar7@gmail.com">adityadugar7@gmail.com</a>
+    <a href="https://github.com/AdityaDugar11/" target="_blank" rel="noopener">github.com/AdityaDugar11</a>
+    <a href="https://www.linkedin.com/in/aditya-dugar-b95962219/" target="_blank" rel="noopener">linkedin.com/in/aditya-dugar</a>
+  </div>
+  <a href="https://www.linkedin.com/in/aditya-dugar-b95962219/" target="_blank" rel="noopener" class="contact-cta">
+    Open LinkedIn →
+  </a>
+</section>
 
-  
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Aditya Dugar — Designed & Built with intention</p>
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </body>
-
 </html>
